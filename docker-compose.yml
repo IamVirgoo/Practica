@@ -1,13 +1,33 @@
-
 version: '3'
 services:
   nginx:
     image: nginx
     ports:
       - "80:80"
-      - "8080:8080"
     restart: on-failure
     volumes:
       - ./app/dist:/var/www/html
       - ./volumes/nginx/conf.d/:/etc/nginx/conf.d
       - ./volumes/nginx/logs/nginx:/var/log/nginx
+    links:
+      - prac
+
+  db:
+    image: postgres:14
+    container_name: db_prac
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env-prod
+
+  prac:
+    image: vadim2422/lumen:latest
+    env_file:
+      - .env-prod
+    container_name: prac
+    command: sh -c  "sleep 10 && alembic upgrade head && python3 generate_data.py && gunicorn src.main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
+    ports:
+      - 8888:8000
+    tty: true
+    depends_on:
+      - db

@@ -30,6 +30,8 @@
   &--container
     @include container
     &--content
+      display: flex
+      justify-content: center
       &--heading
         display: flex
         justify-content: center
@@ -48,6 +50,29 @@
           color: #000
           border-radius: 5px
           letter-spacing: .2em
+          transition: 200ms ease-in
+          &:hover
+            box-shadow: 0 0 15px 0 #E4E4E4
+      &--form
+        display: flex
+        align-items: flex-start
+        flex-direction: column
+        gap: 15px
+        &__input
+          width: 250px
+          padding: 10px 15px
+          border-radius: 5px
+          border: 1px solid #E4E4E4
+          letter-spacing: .2em
+          &::placeholder
+            letter-spacing: .2em
+        &__submit
+          width: 280px
+          padding: 10px 15px
+          border-radius: 5px
+          border: 1px solid #E4E4E4
+          letter-spacing: .2em
+          cursor: pointer
           transition: 200ms ease-in
           &:hover
             box-shadow: 0 0 15px 0 #E4E4E4
