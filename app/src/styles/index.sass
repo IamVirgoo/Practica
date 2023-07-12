@@ -1,0 +1,53 @@
+@import "../global"
+
+.hero
+  padding-top: 100px
+  &--container
+    @include container
+    &--heading
+      padding-top: 250px
+      &--title
+        @include title
+    &--content
+      padding-top: 50px
+      display: flex
+      justify-content: center
+      gap: 30px
+      align-items: center
+      &__ok
+        @include socialLink
+        background-color: #EE8208
+        &:hover
+          box-shadow: 0 0 15px 0 #EE8208
+      &__vk
+        @include socialLink
+        background-color: #45668E
+        &:hover
+          box-shadow: 0 0 15px 0 #45668E
+.vk,
+.ok
+  padding-top: 100px
+  &--container
+    @include container
+    &--content
+      &--heading
+        display: flex
+        justify-content: center
+        flex-direction: column
+        align-items: center
+        gap: 20px
+        &--title
+          @include title
+          &__vk
+            color: #45668E
+          &__ok
+            color: #EE8208
+        &--link
+          padding: 10px
+          background-color: #E4E4E4
+          color: #000
+          border-radius: 5px
+          letter-spacing: .2em
+          transition: 200ms ease-in
+          &:hover
+            box-shadow: 0 0 15px 0 #E4E4E4
